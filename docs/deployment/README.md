@@ -1,0 +1,23 @@
+## Guides
+1. [Deploy ML models in a cloud provider (General)](01_deploy_general.md). Guide to deploy ML models using an API in a
+cloud provider.
+2. [Deploy in Virtech](02_deploy_fib.md). Guide to deploy ML models in Virtech, the UPC cloud provider.
+3. [Deploy in AWS](03_deploy_aws.md). Guide to deploy ML models using an API in an AWS VM.
+4. [Deploy in GCP](04_deploy_gcp.md). Guide to deploy ML models using an API in a GCP VM.
+5. [Deploy in Azure](05_deploy_azure.md). Guide to deploy ML models using an API in an Azure VM.
+6. [Deploy in Okteto](06_deploy_okteto.md). Guide to deploy ML models using an API in Okteto platform.
+
+**Extra demo (not M4):** [Team object store](00_team_object_store.md). AIStor, Caddy, and OSS MLflow on the Team VM, as an extra demo instead of the DagsHub project.
+
+## Cloud providers
+<pre/>
+- Amazon Elastic Compute Cloud (Amazon EC2) from Amazon Web Services (AWS)
+  | URL: https://aws.amazon.com/
+- Azure Virtual Machines from Microsoft Windows Azure
+  | URL: https://azure.microsoft.com/
+- Google Compute Engine from Google Cloud Platform (GCP)
+  | URL: https://cloud.google.com/
+- Virtech, UPC cloud provider (By OpenNebula)
+  | URL: https://www.fib.upc.edu/es/la-fib/servicios-tic/cloud-docente-fib
+  | URL: https://opennebula.io/
+</pre>

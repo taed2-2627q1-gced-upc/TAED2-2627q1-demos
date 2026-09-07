@@ -1,0 +1,22 @@
+{
+  "actions": [
+    {
+      "name": "update_data_docs",
+      "site_names": [],
+      "type": "update_data_docs"
+    }
+  ],
+  "id": "391ee56e-bdaf-4887-9716-7a700554d80d",
+  "name": "validation_checkpoint",
+  "result_format": "SUMMARY",
+  "validation_definitions": [
+    {
+      "id": "82eab79c-d787-438f-ae99-001c54752d19",
+      "name": "raw_data_validator"
+    },
+    {
+      "id": "2d697780-44c0-431a-b593-9725f1f4045d",
+      "name": "clean_data_validator"
+    }
+  ]
+}

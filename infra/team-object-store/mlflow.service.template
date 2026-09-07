@@ -1,0 +1,16 @@
+[Unit]
+Description=Team MLflow tracking server
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mlflow
+Group=mlflow
+EnvironmentFile=/etc/mlflow/team-object-store.env
+WorkingDirectory=/var/lib/mlflow
+ExecStart=/usr/bin/env uvx --from mlflow==2.22.0 --with boto3 mlflow server --host 127.0.0.1 --port 5000 --backend-store-uri sqlite:///mlflow.db --artifacts-destination s3://mlflow-artifacts
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,106 @@
+# Project setup guide<!-- omit in toc -->
+
+This guide will help you set up your project structure and dependency manager. To define the project structure, we will use the [cookiecutter data science template](https://drivendata.github.io/cookiecutter-data-science/). This template is a good starting point for your project, as it provides a well-organized structure and best practices for data science projects.
+
+We will use [uv](https://docs.astral.sh/uv/) as the dependency manager for our project. uv is a Python packaging and project management tool that simplifies the process of managing dependencies and packaging your Python project.
+
+## Table of contents<!-- omit in toc -->
+- [Prerequisites](#prerequisites)
+- [Steps](#steps)
+
+
+## Prerequisites
+- Python 3.11 or higher (can be installed with uv)
+- Pipx
+- Cookiecutter Python package
+- uv environment manager
+- Git
+- GitHub account
+
+## Steps
+1. Install Pipx:
+    ```bash
+    python3 -m pip install --user pipx
+    python3 -m pipx ensurepath
+    ```
+
+2. Install Cookiecutter:
+    ```bash
+    pipx install cookiecutter-data-science
+    pipx install uv
+    ```
+
+3. Create a new project using the cookiecutter data science template:
+    ```bash
+    # From the parent directory where you want to create the project
+    ccds
+    ```
+
+    Follow the prompts to create your project. You can choose the default options or customize them according to your needs. Since we will be using uv we will select `uv` for the `environment_manager` option. In addition, uv stores the list of dependencies installed inside the `pyproject.toml` file. Hence, select the `pyproject.toml` as the dependency file.
+
+4. Change to the project directory:
+    ```bash
+    cd project-name
+    ```
+    Replace `project-name` with the name of your project.
+
+6. Create the virtual environment using uv:
+    ```bash
+    uv sync
+    ```
+
+    Follow the prompts to update the `pyproject.toml` file. You can choose the default options or customize them according to your needs.
+
+7. Add basic project dependencies to the `pyproject.toml` file:
+    ```bash
+    uv add pandas numpy
+    ```
+    This will add the `pandas` and `numpy` packages as project dependencies.
+
+8. Add basic development dependencies to the `pyproject.toml` file:
+    ```bash
+    uv add --group dev ruff pytest
+    ```
+    This will add the `ruff` and `pytest` packages as development dependencies to the project.
+
+> [!TIP]
+> It is recommended to check the uv documentation to get familiar with its features and usage.
+
+9. Create a new repository on [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository):
+
+    ![Create a new repository](https://docs.github.com/assets/images/help/repository/repo-create.png)
+
+    If it is the first time using GitHub, follow [this](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) guidelines to connect to GitHub with SSH with your local Git installation.
+
+> [!Important]
+> For those using Windows 10/11 it is highly recommended to use the Windows Subsystem for Linux (WSL). For instructions on how to set it up see [here](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+10. Initialize a new Git repository in the project directory:
+    ```bash
+    git init
+    ```
+11. Add the project files to the Git repository:
+    ```bash
+    git add .
+    ```
+12. Commit the changes:
+    ```bash
+    git commit -m "Initial commit"
+    ```
+13. Add the remote repository URL:
+    ```bash
+    git remote add origin ssh-url-to-remote-repository
+    ```
+    Replace `ssh-url-to-remote-repository` with the URL of the remote repository you created in step 9.
+
+> [!WARNING]
+> Make sure you use the SSH URL and not the HTTPS URL. It should look something like: `git@github.com:your-org/your-repository-name.git`
+
+14. Push the changes to the remote repository:
+    ```bash
+    git push -u origin branch-name
+    ```
+    This will push the changes to the `branch-name` branch of the remote repository.
+    By default, newer versions of git set the initial default branch to `main`. Older versions use the branch name `master`.
+
+Your project is now set up with the project structure and dependency manager. You can start working on your project by adding code, data, and other project-specific files to the project directory. Make sure to follow best practices for project organization and version control to ensure reproducibility and collaboration.

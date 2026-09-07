@@ -1,0 +1,151 @@
+schema: '2.0'
+stages:
+  download:
+    cmd: python3 -m src.data.download_raw_dataset
+    deps:
+    - path: src/config.py
+      hash: md5
+      md5: 9bdec777b3b80b10e0edf8c8275af359
+      size: 1394
+    - path: src/data/download_raw_dataset.py
+      hash: md5
+      md5: 810f4f307477b783266e99604b847e57
+      size: 649
+    outs:
+    - path: data/raw/imdb.parquet
+      hash: md5
+      md5: 9e249b92e72271b5a89ccf61e07a236c
+      size: 25169108
+  preprocess:
+    cmd: python3 -m src.data.preprocess
+    deps:
+    - path: data/raw/imdb.parquet
+      hash: md5
+      md5: 9e249b92e72271b5a89ccf61e07a236c
+      size: 25169108
+    - path: src/config.py
+      hash: md5
+      md5: 9bdec777b3b80b10e0edf8c8275af359
+      size: 1394
+    - path: src/data/preprocess.py
+      hash: md5
+      md5: 7295deeae634a838c3cae3f47dc8f0e9
+      size: 1601
+    outs:
+    - path: data/interim/imdb_cleaned.parquet
+      hash: md5
+      md5: cdb42f4751d9c1c77e5f5bdc37548833
+      size: 25783166
+  configure_gx:
+    cmd: python3 -m src.data.gx_context_configuration
+    deps:
+    - path: src/data/gx_context_configuration.py
+      hash: md5
+      md5: 3a61ff2758fdfc14e6c6003f5162a6be
+      size: 3718
+  validate-data:
+    cmd: python3 -m src.data.validate_data
+    deps:
+    - path: data/interim/imdb_cleaned.parquet
+      hash: md5
+      md5: cdb42f4751d9c1c77e5f5bdc37548833
+      size: 25783166
+    - path: src/data/gx_context_configuration.py
+      hash: md5
+      md5: 3a61ff2758fdfc14e6c6003f5162a6be
+      size: 3718
+    - path: src/data/validate_data.py
+      hash: md5
+      md5: f211bd7615c06e3a36d2c139f0953a69
+      size: 776
+  split:
+    cmd: python3 -m src.data.split_data
+    deps:
+    - path: data/interim/imdb_cleaned.parquet
+      hash: md5
+      md5: cdb42f4751d9c1c77e5f5bdc37548833
+      size: 25783166
+    - path: src/config.py
+      hash: md5
+      md5: 9bdec777b3b80b10e0edf8c8275af359
+      size: 1394
+    - path: src/data/split_data.py
+      hash: md5
+      md5: 4382ad1339e71501b336b2320ded9aec
+      size: 1148
+    outs:
+    - path: data/processed/test.parquet
+      hash: md5
+      md5: cebe55fa23408c593f4baa7e4d6b08e3
+      size: 2579019
+    - path: data/processed/train.parquet
+      hash: md5
+      md5: 179815b696897fe224e67bb39e23c246
+      size: 18043100
+    - path: data/processed/validation.parquet
+      hash: md5
+      md5: 999cc6393233cd4cd5cbbb1f0a6748fc
+      size: 5199795
+  train@0:
+    cmd: python3 -m src.modeling.train distilbert/distilbert-base-uncased
+      distilbert-imdb
+    deps:
+    - path: data/processed/train.parquet
+      hash: md5
+      md5: 179815b696897fe224e67bb39e23c246
+      size: 18043100
+    - path: data/processed/validation.parquet
+      hash: md5
+      md5: 999cc6393233cd4cd5cbbb1f0a6748fc
+      size: 5199795
+    - path: src/config.py
+      hash: md5
+      md5: 9bdec777b3b80b10e0edf8c8275af359
+      size: 1394
+    - path: src/modeling/train.py
+      hash: md5
+      md5: 58b9a9a1f7a7b961291f3152b4416c13
+      size: 3407
+    outs:
+    - path: models/distilbert-imdb
+      hash: md5
+      md5: fccc01c1bfc3770aa85f4527eafc2c04.dir
+      size: 268783463
+      nfiles: 7
+    - path: models/distilbert-imdb-checkpoint
+      hash: md5
+      md5: 70ad3d749d16d2c0182d7b9780c31d0f.dir
+      size: 804528093
+      nfiles: 11
+  train@1:
+    cmd: python3 -m src.modeling.train
+      distilbert/distilbert-base-uncased-finetuned-sst-2-english
+      distilbert-sst-imdb
+    deps:
+    - path: data/processed/train.parquet
+      hash: md5
+      md5: 179815b696897fe224e67bb39e23c246
+      size: 18043100
+    - path: data/processed/validation.parquet
+      hash: md5
+      md5: 999cc6393233cd4cd5cbbb1f0a6748fc
+      size: 5199795
+    - path: src/config.py
+      hash: md5
+      md5: 9bdec777b3b80b10e0edf8c8275af359
+      size: 1394
+    - path: src/modeling/train.py
+      hash: md5
+      md5: 58b9a9a1f7a7b961291f3152b4416c13
+      size: 3407
+    outs:
+    - path: models/distilbert-sst-imdb
+      hash: md5
+      md5: 521112b82efc79c7661614311425014f.dir
+      size: 268783567
+      nfiles: 7
+    - path: models/distilbert-sst-imdb-checkpoint
+      hash: md5
+      md5: f229b7d550dc3bd06a26287ad911532b.dir
+      size: 804528197
+      nfiles: 11

@@ -1,0 +1,14 @@
+services:
+  aistor:
+    image: quay.io/minio/aistor/minio:RELEASE.2025-12-20T04-58-37Z
+    command: server /data --console-address :9001
+    env_file: ${AISTOR_ENV_FILE:-.env}
+    environment:
+      MINIO_LICENSE: /opt/minio/minio.license
+    ports:
+      - 127.0.0.1:9000:9000
+      - 127.0.0.1:9001:9001
+    volumes:
+      - ./data:/data
+      - ./minio.license:/opt/minio/minio.license:ro
+    restart: unless-stopped
