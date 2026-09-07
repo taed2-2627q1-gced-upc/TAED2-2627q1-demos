@@ -50,12 +50,12 @@ ssh -i ~/.ssh/my-key cloud_user@X.X.X.X
 2. Clone the GitHub repository containing the ML model and API code using the following command:
 
 ```shell
-git clone git@github.com:taed2-2627q1-gced-upc/TAED2-2627q1-demos.git
+git clone git@github.com:taed2-2627q1-gced-upc/TAED2-demos.git
 ```
 ## Step 5: Set up the environment
 1. Install the project dependencies with uv:
 ```shell
-cd TAED2-2627q1-demos
+cd TAED2-demos
 uv sync --all-groups
 ```
 

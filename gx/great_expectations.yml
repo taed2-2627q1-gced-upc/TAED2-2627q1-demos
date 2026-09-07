@@ -92,7 +92,7 @@ fluent_datasources:
             id: bb73cbf2-5ae2-41ca-8569-217d0229ca02
             partitioner:
         path:
-          /home/santiago/Local-Projects/TAED2-2627q1-demos/data/raw/imdb.parquet
+          /home/santiago/Local-Projects/TAED2-demos/data/raw/imdb.parquet
       clean_imdb_reviews:
         type: parquet
         id: 4d7b43bf-47d2-47f7-a565-579917d850ec
@@ -101,6 +101,6 @@ fluent_datasources:
             id: 7a07b8c8-600a-438e-b173-959318838279
             partitioner:
         path:
-          /home/santiago/Local-Projects/TAED2-2627q1-demos/data/interim/imdb_cleaned.parquet
+          /home/santiago/Local-Projects/TAED2-demos/data/interim/imdb_cleaned.parquet
 analytics_enabled:
 data_context_id: e1f72767-c312-4a91-a255-4ff584943178

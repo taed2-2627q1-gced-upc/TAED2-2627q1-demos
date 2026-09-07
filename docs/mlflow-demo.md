@@ -32,7 +32,7 @@ In this demo we use the hosted **MLflow tracking server** on the team's **DagsHu
 Set in `.env` (see [`.env.template`](../.env.template)). Each member uses their own DagsHub username and token:
 
 ```bash
-MLFLOW_TRACKING_URI=https://dagshub.com/<instructor>/TAED2-2627q1-demos.mlflow
+MLFLOW_TRACKING_URI=https://dagshub.com/<instructor>/TAED2-demos.mlflow
 MLFLOW_TRACKING_USERNAME=<your-DagsHub-user>
 MLFLOW_TRACKING_PASSWORD=<your-DagsHub-token>
 ```
@@ -90,7 +90,7 @@ can use the [`mlflow.log_param()`](https://mlflow.org/docs/latest/python_api/mlf
 [`mlflow.log_artifact()`](https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.log_artifact) functions. See the [MLflow documentation](https://mlflow.org/docs/latest/tracking.html#logging-data-to-runs) for more details.
 
 ## MLflow UI
-MLflow provides a UI to visualize the experiments, runs and artifacts. Open the **DagsHub tracking URI**, for example `https://dagshub.com/<instructor>/TAED2-2627q1-demos.mlflow`. The browser may ask for your DagsHub username and token. Use your own credentials.
+MLflow provides a UI to visualize the experiments, runs and artifacts. Open the **DagsHub tracking URI**, for example `https://dagshub.com/<instructor>/TAED2-demos.mlflow`. The browser may ask for your DagsHub username and token. Use your own credentials.
 
 ## Using MLflow in Kaggle, Colab, or other cloud environments
 If you are using Kaggle, Colab, or other cloud environments, point MLflow at the team's **DagsHub tracking URI** (`MLFLOW_TRACKING_URI`, plus username and token). Put those values in the host's secrets. Do not log runs on the instructor DagsHub project.

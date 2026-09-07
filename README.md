@@ -4,28 +4,30 @@ Reference project and walkthroughs for **Advanced Topics in Data Engineering II*
 
 ## Your team repo
 
-Work in your own repository under [taed2-2627q1-gced-upc](https://github.com/taed2-2627q1-gced-upc). Create `taed2-<team-name>`, add your teammates, and clone that repo for all coursework. **This demo repo is a read-only reference** — do not submit work here.
+Work in your own repository under [taed2-2627q1-gced-upc](https://github.com/taed2-2627q1-gced-upc). Create `taed2-<team-name>`, add your teammates, and clone that repo for all coursework. **This demos repo is read-only reference** — do not submit work here.
 
 You can choose a different ML problem. The milestones stay the same: versioned data, tracked experiments, tests, and an API we can run.
+
+**Before lab session 2:** finish the [project setup guide](docs/project-setup.md) (accounts, course GitHub repo, DagsHub project, cookiecutter + uv).
 
 ## Milestones
 
 | | Practice | Demo |
 |---|----------|------|
-| **M1** | Hugging Face dataset and model cards; GitHub + board/chat; DagsHub connectivity ping | [Card templates](https://huggingface.co/docs/hub/model-card-annotated), [dataset card guide](https://github.com/huggingface/datasets/blob/main/templates/README_guide.md), [Git](docs/git-demo.md), [connectivity ping](docs/mlflow-demo.md#connectivity-ping) |
-| **M2** | Cookiecutter + uv; GitHub Flow + DVC; MLflow on the DagsHub project | [Project setup](docs/project-setup.md), [Git](docs/git-demo.md), [DVC](docs/dvc-demo.md), [MLflow](docs/mlflow-demo.md) |
+| **M1** | Hugging Face dataset and model cards; GitHub + board/chat; DagsHub connectivity ping | [Project setup](docs/project-setup.md), [Card templates](https://huggingface.co/docs/hub/model-card-annotated), [dataset card guide](https://github.com/huggingface/datasets/blob/main/templates/README_guide.md), [Git](docs/git-demo.md), [connectivity ping](docs/mlflow-demo.md#connectivity-ping) |
+| **M2** | Cookiecutter + uv; GitHub Flow + DVC; MLflow on the DagsHub project | [Git](docs/git-demo.md), [DVC](docs/dvc-demo.md), [MLflow](docs/mlflow-demo.md) |
 | **M3** | CodeCarbon; Ruff; Pytest + Great Expectations | [CodeCarbon](docs/codecarbon-demo.md), Ruff (pre-commit in this repo), [Pytest](docs/pytest-demo.md), [GX](docs/great-expectations-demo.md) |
 | **M4** | Deploy on the Team VM (or cloud); FastAPI + tests | [Deployment](docs/deployment/), [FastAPI](docs/fastapi-demo.md) |
 
-Default tools are listed in each demo. If you swap a tool, keep the same deliverable (e.g., a remote for DVC, a shared tracking server, an HTTP API with tests).
+Default tools are listed in each demo. If you swap a tool, keep the same deliverable (e.g. a remote for DVC, a shared tracking server, an HTTP API with tests).
 
-**Team VM:** FIB allocates one VM per team for **M4** deploy. Default M1/M2 use GitHub and a **DagsHub project**; they do not wait on the VM. Self-hosting DVC and MLflow on the VM can be done following the [Team object store guide](docs/deployment/00_team_object_store.md).
+**Team VM:** FIB allocates one VM per team for **M4** deploy. Canonical M1/M2 use GitHub and a **DagsHub project**; they do not wait on the VM. Self-hosting DVC and MLflow on the VM is the [Team object store extra demo](docs/deployment/00_team_object_store.md).
 
 ## Optional extras
 
 Not required. Useful if you want to push beyond the default stack:
 
-- Self-hosted DVC/MLflow: [Team object store (AIStor on the Team VM)](docs/deployment/00_team_object_store.md)
+- Extra demo: [Team object store (AIStor on the Team VM)](docs/deployment/00_team_object_store.md)
 - [SHAP](https://shap.readthedocs.io/en/latest/text_examples.html)
 - Fairness: [AIF360](https://github.com/Trusted-AI/AIF360), [Fairlearn](https://fairlearn.org/)
 - [MLOps tools list](https://agate-tangerine-725.notion.site/MLOps-tools-255624cb2156801e9a98db82fd911da2?pvs=74)

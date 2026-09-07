@@ -49,12 +49,12 @@ Next, point DVC at your team's **DagsHub project**. Use the S3-compatible endpoi
 
 ```bash
 dvc remote add -d storage s3://dvc
-dvc remote modify storage endpointurl https://dagshub.com/<instructor>/TAED2-2627q1-demos.s3
+dvc remote modify storage endpointurl https://dagshub.com/<instructor>/TAED2-demos.s3
 dvc remote modify --local storage access_key_id YOUR_DAGSHUB_TOKEN
 dvc remote modify --local storage secret_access_key YOUR_DAGSHUB_TOKEN
 ```
 
-Replace `<instructor>/TAED2-2627q1-demos` with the **DagsHub project owner** and `taed2-<team-name>`. Collaborators keep that owner in the URL; they do not substitute their own username. Each member authenticates with their own token from [DagsHub user settings](https://dagshub.com/user/settings/tokens).
+Replace `<instructor>/TAED2-demos` with the **DagsHub project owner** and `taed2-<team-name>`. Collaborators keep that owner in the URL; they do not substitute their own username. Each member authenticates with their own token from [DagsHub user settings](https://dagshub.com/user/settings/tokens).
 
 Never commit tokens. The `--local` settings live in `.dvc/config.local`, which must stay out of Git. This reference repository deliberately has no default remote.
 
