@@ -13,7 +13,7 @@ This guide does **not** replace the DVC or MLflow demos. You install those packa
 
 ## Ready when
 
-- [ ] Every member has GitHub, DagsHub, and Hugging Face accounts
+- [ ] Every member has GitHub and DagsHub
 - [ ] Every member can use Git over SSH with GitHub
 - [ ] The team GitHub repo `taed2-<team-name>` exists under [taed2-2627q1-gced-upc](https://github.com/taed2-2627q1-gced-upc) and all members can access it
 - [ ] A DagsHub project with the **same name** exists; all members are collaborators; each member has a personal DagsHub token
@@ -22,7 +22,7 @@ This guide does **not** replace the DVC or MLflow demos. You install those packa
 - [ ] A cookiecutter + uv project is pushed to the course GitHub remote, with `dvc[s3]`, `mlflow`, and the listed dev tools installed locally
 
 > [!IMPORTANT]
-> Canonical M1 and M2 use **GitHub** and a **DagsHub project**. You do **not** need a Team VM before lab session 2 (or for canonical M2). FIB VMs are for M4 deploy; self-hosting on the VM is an [extra demo](deployment/00_team_object_store.md).
+> Basic M1 and M2 use **GitHub** and a **DagsHub project**. You do **not** need a Team VM before lab session 2 (or for basic M2). FIB VMs are for M4 deployment; self-hosting on the VM is an [optional M2 path](deployment/00_team_object_store.md).
 
 > [!IMPORTANT]
 > On Windows 10/11, use [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) for this course’s local tooling.
@@ -35,21 +35,21 @@ In the course org [taed2-2627q1-gced-upc](https://github.com/taed2-2627q1-gced-u
 
 Create it **empty**: do **not** add a README, license, or `.gitignore` in the GitHub UI (those fight the first push from cookiecutter).
 
-Git for the student project stays on GitHub. Do not use DagsHub as the Git remote.
+Git for the project stays on GitHub. Do not use DagsHub as the Git remote.
 
 ### 2. Create the DagsHub project
 
-On [DagsHub](https://dagshub.com/), one member creates a repository named like the GitHub repo (`taed2-<team-name>`) and adds the other members as collaborators. Only collaborators can push DVC data and log MLflow runs. Do not wait for a course-provisioned DagsHub org.
+On [DagsHub](https://dagshub.com/), one member creates a repository named like the GitHub repo (`taed2-<team-name>`) and adds the other members as collaborators. Only collaborators can push DVC data and log MLflow runs.
 
-You will copy remote / MLflow URI details from that project’s **Remote** UI later in the [DVC](dvc-demo.md) and [MLflow](mlflow-demo.md) demos. Do not log student runs on the instructor DagsHub project.
+You will copy remote / MLflow URI details from that project’s **Remote** UI later in the [DVC](dvc-demo.md) and [MLflow](mlflow-demo.md) demos.
 
 ### 3. Board and chat
 
-Pick any shared board and chat the team will actually use. Staff look for evidence of coordination, not a specific product.
+Pick any shared board and chat the team will actually use. We will look for evidence of coordination, not a specific product.
 
 ## Every member
 
-1. Create accounts on [GitHub](https://github.com/), [DagsHub](https://dagshub.com/), and [Hugging Face](https://huggingface.co/) if you do not have them yet.
+1. Create accounts on [GitHub](https://github.com/) and [DagsHub](https://dagshub.com/) if you do not have them yet.
 2. Connect Git to GitHub with [SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
 3. Create a personal token under [DagsHub user settings](https://dagshub.com/user/settings/tokens). Never commit tokens or share one team-wide token.
 4. Confirm you can open **Colab or Kaggle** and use that host’s secrets (not notebook cells) for credentials when you run the ping.
@@ -58,8 +58,6 @@ Pick any shared board and chat the team will actually use. Staff look for eviden
     ```bash
     git clone git@github.com:taed2-2627q1-gced-upc/taed2-<team-name>.git
     ```
-
-Hugging Face is needed for dataset and model cards ([model card template](https://huggingface.co/docs/hub/model-card-annotated), [dataset card guide](https://github.com/huggingface/datasets/blob/main/templates/README_guide.md)). Cards are take-home work reviewed in progress reviews and assessed with the first report — not a Friday week-1 deadline. Add an `HF_TOKEN` to a local `.env` later when your code needs it (see [`.env.template`](../.env.template)); keep `.env` out of Git.
 
 ## Local project (cookiecutter + uv)
 

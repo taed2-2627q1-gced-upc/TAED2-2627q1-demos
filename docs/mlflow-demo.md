@@ -22,7 +22,7 @@ uv add mlflow
 ```
 
 ## Create a DagsHub project
-Git stays on GitHub. On DagsHub, one member creates a repository named like the GitHub repo (`taed2-<team-name>`) and adds the other four as collaborators. Only collaborators can log MLflow runs. Do not wait for a course-provisioned DagsHub org. Copy the MLflow URI from that project's **Remote** button. The instructor live lab uses a live instructor DagsHub project; do not log student runs there.
+Git stays on GitHub. On DagsHub, one member creates a repository named like the GitHub repo (`taed2-<team-name>`) and adds the other four as collaborators. Only collaborators can log MLflow runs. Copy the MLflow URI from that project's **Remote** button.
 
 ## Configure a tracking server
 By default MLflow stores the tracking data locally in an `mlruns` subdirectory of where you ran the code. However, we are going to work in a collaborative project, so we need a shared tracking server that all team members can reach. MLflow supports several tracking servers, such as AWS S3, Azure Blob Storage, Google Cloud Storage, and Databricks.
@@ -32,20 +32,20 @@ In this demo we use the hosted **MLflow tracking server** on the team's **DagsHu
 Set in `.env` (see [`.env.template`](../.env.template)). Each member uses their own DagsHub username and token:
 
 ```bash
-MLFLOW_TRACKING_URI=https://dagshub.com/<instructor>/TAED2-demos.mlflow
+MLFLOW_TRACKING_URI=https://dagshub.com/<username>/<repo>.mlflow
 MLFLOW_TRACKING_USERNAME=<your-DagsHub-user>
 MLFLOW_TRACKING_PASSWORD=<your-DagsHub-token>
 ```
 
 Replace the instructor owner/repo with the **DagsHub project owner** and `taed2-<team-name>`. Collaborators keep that owner in the URI. Get a token from [DagsHub user settings](https://dagshub.com/user/settings/tokens). Load `.env` from `src/config.py` with `dotenv`. MLflow reads these variables from the environment; the reference project does not hard-code DagsHub.
 
-Self-hosting MLflow on the Team VM is an [extra demo](deployment/00_team_object_store.md), not the canonical path.
+Self-hosting MLflow on the Team VM is an [alternative path](deployment/00_team_object_store.md).
 
 >[!IMPORTANT]
 >Keep `.env` out of Git. Never paste tokens into a committed notebook.
 
 ## Connectivity ping
-The M1 live lab is a **connectivity ping**, not experiment tracking. In Colab or Kaggle, store `MLFLOW_TRACKING_URI`, `MLFLOW_TRACKING_USERNAME`, and `MLFLOW_TRACKING_PASSWORD` in the notebook host's secrets (not in the notebook body). Log one dummy metric to the team's DagsHub tracking URI and screenshot that point in the DagsHub MLflow UI. Nobody logs runs on the instructor DagsHub project.
+In Colab or Kaggle, store `MLFLOW_TRACKING_URI`, `MLFLOW_TRACKING_USERNAME`, and `MLFLOW_TRACKING_PASSWORD` in the notebook host's secrets (not in the notebook body). Log one dummy metric to the team's DagsHub tracking URI and screenshot that point in the DagsHub MLflow UI.
 
 ```python
 import os

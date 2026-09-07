@@ -21,13 +21,11 @@ simple machine learning project.
 
 ## DagsHub project (prerequisite)
 
-Before configuring DVC, create a **DagsHub project** for the team. Git stays on GitHub (`taed2-<team-name>` under the course org). On DagsHub, one member creates a repository with the same name, then adds the other four as collaborators so everyone can push data and log runs. Do not wait for a course-provisioned DagsHub org.
+Before configuring DVC, create a **DagsHub project** for the team. Git stays on GitHub (`taed2-<team-name>` under the course org). On DagsHub, one member creates a repository with the same name, then adds the other four as collaborators so everyone can push data and log runs.
 
-Copy the DVC remote commands from that project's **Remote → Data → DVC** button. The instructor walkthrough uses a live instructor DagsHub project as the worked example; do not push your data there. This reference repository has no committed default remote: each Student project configures its own DagsHub project.
+Copy the DVC remote commands from that project's **Remote → Data → DVC** button.
 
-Copy the DVC remote commands from that project's **Remote → Data → DVC** button. The instructor walkthrough uses a live instructor DagsHub project as the worked example; do not push your data there. This reference repository has no committed default remote: each Student project configures its own DagsHub project.
-
-Self-hosting the [Team object store](deployment/00_team_object_store.md) instead is an extra demo, not the canonical path.
+Self-hosting the [Team object store](deployment/00_team_object_store.md) instead is an optional path.
 
 ## Install DVC
 First, we need to install DVC. We can do this by running the following command:
@@ -49,14 +47,14 @@ Next, point DVC at your team's **DagsHub project**. Use the S3-compatible endpoi
 
 ```bash
 dvc remote add -d storage s3://dvc
-dvc remote modify storage endpointurl https://dagshub.com/<instructor>/TAED2-demos.s3
+dvc remote modify storage endpointurl https://dagshub.com/<username>/<repo>.s3
 dvc remote modify --local storage access_key_id YOUR_DAGSHUB_TOKEN
 dvc remote modify --local storage secret_access_key YOUR_DAGSHUB_TOKEN
 ```
 
-Replace `<instructor>/TAED2-demos` with the **DagsHub project owner** and `taed2-<team-name>`. Collaborators keep that owner in the URL; they do not substitute their own username. Each member authenticates with their own token from [DagsHub user settings](https://dagshub.com/user/settings/tokens).
+Replace `<username>/<repo>` with the **DagsHub project owner** and `taed2-<team-name>`. Collaborators keep that owner in the URL; they do not substitute their own username. Each member authenticates with their own token from [DagsHub user settings](https://dagshub.com/user/settings/tokens).
 
-Never commit tokens. The `--local` settings live in `.dvc/config.local`, which must stay out of Git. This reference repository deliberately has no default remote.
+Never commit tokens. The `--local` settings live in `.dvc/config.local`, which must stay out of Git.
 
 ## Working with DVC
 ### Adding data to DVC
@@ -168,4 +166,4 @@ good practice to commit this file to Git after its creation or modification, to 
 - You cannot track a directory with DVC if it contains any file or directory already tracked by DVC. You need to remove the tracked files or directories first by running `dvc remove <file or directory>`, and then add the directory to DVC.
 - Do not use remote DVC garbage collection during this course. It can make historical DVC revisions unavailable; clean local caches instead.
 
-Self-hosting DVC on the Team VM is documented as an [extra demo](deployment/00_team_object_store.md#5-configure-dvc-clients).
+Self-hosting DVC on the Team VM is documented as an [alternative path](deployment/00_team_object_store.md#5-configure-dvc-clients).
